@@ -1,0 +1,32 @@
+NetworkMapper Windows release signing
+
+1. Build the executable with python build_windows.py. Sign the final
+   dist\NetworkMapper\NetworkMapper.exe before compressing the folder.
+2. Use either an existing publicly trusted code signing certificate or an
+   Azure Artifact Signing Public Trust certificate profile. The publisher
+   Windows displays comes from the verified signing identity.
+3. Run one of the commands below from the source folder. Use the exact
+   certificate thumbprint or the metadata for the intended account/profile.
+
+Windows certificate store:
+  .\sign_windows.ps1 -Thumbprint <40-character-thumbprint>
+  Use -MachineStore if the certificate is in LocalMachine\My.
+  Use -TimestampUrl to select a timestamp service required by your provider.
+
+Azure Artifact Signing:
+  .\sign_windows.ps1 -SignTool <path-to-signtool.exe> -ArtifactSigningDll <path-to-Azure.CodeSigning.Dlib.dll> -Metadata <path-to-metadata.json>
+  Sign in using the method configured for the account first. Use matching
+  architectures for SignTool and its signing DLL.
+
+Verification and packaging:
+  .\sign_windows.ps1
+  With no signing arguments the script only verifies. It requires a valid,
+  timestamped Authenticode signature and prints the publisher and EXE SHA-256.
+  Then compress the entire dist\NetworkMapper folder. Extract that ZIP
+  separately, verify the extracted EXE, and record the ZIP's SHA-256.
+  Signing authenticates the EXE. The ZIP hash covers the complete archive.
+
+Microsoft documentation:
+  https://learn.microsoft.com/windows/win32/seccrypto/signtool
+  https://learn.microsoft.com/windows/apps/package-and-deploy/code-signing-options
+  https://learn.microsoft.com/azure/artifact-signing/how-to-signing-integrations

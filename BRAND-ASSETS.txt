@@ -1,0 +1,16 @@
+Brand artwork bundled with NetworkMapper
+========================================
+
+Simple Icons 16.0.0
+Source: https://github.com/simple-icons/simple-icons/tree/16.0.0/icons
+Project license: https://github.com/simple-icons/simple-icons/blob/16.0.0/LICENSE.md
+Individual brand guidance: https://github.com/simple-icons/simple-icons/blob/16.0.0/DISCLAIMER.md
+The SVG paths are stored in brand_paths.py and rendered in a common dark ink.
+
+Dashboard Icons
+Source: https://github.com/homarr-labs/dashboard-icons/tree/59f1e9a4108f4f510f41e9588f078631de1e1405/png
+Selected PNGs are stored in brand_paths.py. Original filenames are listed there.
+
+Brand artwork identifies vendors and products on the map. The marks belong
+to their respective owners. Consult the brand's usage guidance before
+redistributing the application or publishing a map that includes its mark.

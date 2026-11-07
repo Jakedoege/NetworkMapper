@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+build/
+dist/
+networkmap.json
+*.pfx
+*.p12
